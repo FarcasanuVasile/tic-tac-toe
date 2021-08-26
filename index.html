@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Tic-tac-toe</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <form>
+            <div class="form-content">
+                <div class="form-group"><label for="x">X - </label>
+                    <input type="text" name="player-1" id="X" placeholder="Player 1">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="player-2" id="O" placeholder="Player 2">
+                    <label for="o"> - O</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="game-wrapper">
+        <div class="game-container">
+            <div class="game-row game-row-1">
+                <div class="game-cell game-cell-11"></div>
+                <div class="game-cell game-cell-12"></div>
+                <div class="game-cell game-cell-13"></div>
+            </div>
+            <div class="game-row game-row-2">
+                <div class="game-cell game-cell-21"></div>
+                <div class="game-cell game-cell-22"></div>
+                <div class="game-cell game-cell-23"></div>
+            </div>
+            <div class="game-row game-row-3">
+                <div class="game-cell game-cell-31"></div>
+                <div class="game-cell game-cell-32"></div>
+                <div class="game-cell game-cell-33"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="restart-container">
+        <span class="restart">Restart Game</span>
+    </div>
+    <div class="modal">
+        <div class="modal-body">
+            <div class="close-modal">&times;</div>
+            <h1>
+                <span class="winner">Name</span> has won!
+            </h1>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
