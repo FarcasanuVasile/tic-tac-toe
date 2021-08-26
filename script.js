@@ -17,7 +17,6 @@ restartButton.addEventListener("click", function () {
 const switchPlayer = () => {
     checkWinner();
     if (winner) {
-        console.log(winner);
         return;
     }
     currentPlayer == "X" ? (currentPlayer = "O") : (currentPlayer = "X");
