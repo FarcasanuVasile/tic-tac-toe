@@ -45,8 +45,10 @@ const checkWinner = () => {
         (cell3 == cell6 && cell6 == cell9 && (cell3 == "X" || cell3 == "O"))
     ) {
         winner = currentPlayer;
+        const winnerNameText = document.querySelector(`#${winner}`).value;
         winnerName.innerHTML = document.querySelector(`#${winner}`).value;
         winnerModal.classList.add("open");
+        setWinnerToLocalStorage(winnerNameText);
     }
 };
 
@@ -62,3 +64,15 @@ gameCell.forEach((cell) => {
 closeModal.addEventListener("click", function () {
     winnerModal.classList.remove("open");
 });
+const setWinnerToLocalStorage = (player) => {
+    let storageScores = localStorage.getItem("scores")
+        ? JSON.parse(localStorage.getItem("scores"))
+        : {};
+    console.log(storageScores);
+    if (storageScores[player]) {
+        storageScores[player]++;
+    } else {
+        storageScores[player] = 1;
+    }
+    localStorage.setItem("storageScores", JSON.stringify(storageScores));
+};
