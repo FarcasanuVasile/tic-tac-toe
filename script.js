@@ -1,9 +1,11 @@
 let currentPlayer = "X";
 let winner = null;
+const setNames = document.querySelector(".set-names");
 const winnerModal = document.querySelector(".modal");
+const winnerLine = document.querySelector(".winner-line");
 const closeModal = document.querySelector(".close-modal");
-const player1 = document.querySelector("#x");
-const player2 = document.querySelector("#o");
+const player1 = document.querySelector(".player-1");
+const player2 = document.querySelector(".player-2");
 const winnerName = document.querySelector(".winner");
 const gameCell = document.querySelectorAll(".game-cell");
 const restartButton = document.querySelector(".restart");
@@ -13,6 +15,16 @@ restartButton.addEventListener("click", function () {
     });
     winner = null;
     currentPlayer = "X";
+    winnerLine.classList.remove(
+        "top",
+        "bottom",
+        "three-to-seven",
+        "one-to-nine",
+        "one-to-seven",
+        "three-to-nine",
+        "two-to-eight",
+        "open"
+    );
 });
 const switchPlayer = () => {
     checkWinner();
@@ -48,12 +60,55 @@ const checkWinner = () => {
         const winnerNameText = document.querySelector(`#${winner}`).value;
         winnerName.innerHTML = document.querySelector(`#${winner}`).value;
         winnerModal.classList.add("open");
+        winnerLine.classList.add("open");
         setWinnerToLocalStorage(winnerNameText);
+        if (cell1 == cell2 && cell2 == cell3 && (cell1 == "X" || cell1 == "O"))
+            winnerLine.classList.add("top");
+        else if (
+            cell7 == cell8 &&
+            cell8 == cell9 &&
+            (cell1 == "X" || cell1 == "O")
+        )
+            winnerLine.classList.add("bottom");
+        else if (
+            cell1 == cell5 &&
+            cell5 == cell9 &&
+            (cell1 == "X" || cell1 == "O")
+        )
+            winnerLine.classList.add("one-to-nine");
+        else if (
+            cell7 == cell5 &&
+            cell5 == cell3 &&
+            (cell7 == "X" || cell7 == "O")
+        )
+            winnerLine.classList.add("three-to-seven");
+        else if (
+            cell3 == cell6 &&
+            cell6 == cell9 &&
+            (cell3 == "X" || cell3 == "O")
+        )
+            winnerLine.classList.add("three-to-nine");
+        else if (
+            cell1 == cell4 &&
+            cell4 == cell7 &&
+            (cell1 == "X" || cell1 == "O")
+        )
+            winnerLine.classList.add("one-to-seven");
+        else if (
+            cell2 == cell5 &&
+            cell5 == cell8 &&
+            (cell2 == "X" || cell2 == "O")
+        )
+            winnerLine.classList.add("two-to-eight");
     }
 };
 
 gameCell.forEach((cell) => {
     cell.addEventListener("click", function () {
+        if (player1.value == "" || player2.value == "") {
+            alert("Please provide player names");
+            return;
+        }
         if (winner) return;
         if (this.innerText == "") {
             this.innerText = currentPlayer;
@@ -63,6 +118,10 @@ gameCell.forEach((cell) => {
 });
 closeModal.addEventListener("click", function () {
     winnerModal.classList.remove("open");
+});
+setNames.addEventListener("click", function () {
+    player1.setAttribute("disabled", true);
+    player2.setAttribute("disabled", true);
 });
 const setWinnerToLocalStorage = (player) => {
     let storageScores = localStorage.getItem("scores")
@@ -75,6 +134,5 @@ const setWinnerToLocalStorage = (player) => {
     } else {
         storageScores[player] = 1;
     }
-    console.log(storageScores);
     localStorage.setItem("scores", JSON.stringify(storageScores));
 };

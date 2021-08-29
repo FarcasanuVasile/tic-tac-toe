@@ -17,10 +17,11 @@
         <form>
             <div class="form-content">
                 <div class="form-group"><label for="x">X - </label>
-                    <input type="text" name="player-1" id="X" placeholder="Player 1">
+                    <input type="text" name="player-1" id="X" class="player-1" placeholder="Player 1">
                 </div>
+                <span class="set-names">Set Names</span>
                 <div class="form-group">
-                    <input type="text" name="player-2" id="O" placeholder="Player 2">
+                    <input type="text" name="player-2" id="O" class="player-2" placeholder="Player 2">
                     <label for="o"> - O</label>
                 </div>
             </div>
@@ -28,6 +29,7 @@
     </div>
     <div class="game-wrapper">
         <div class="game-container">
+            <div class="winner-line"></div>
             <div class="game-row game-row-1">
                 <div class="game-cell game-cell-11"></div>
                 <div class="game-cell game-cell-12"></div>
