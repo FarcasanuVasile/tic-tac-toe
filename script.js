@@ -67,7 +67,7 @@ const checkWinner = () => {
         else if (
             cell7 == cell8 &&
             cell8 == cell9 &&
-            (cell1 == "X" || cell1 == "O")
+            (cell7 == "X" || cell1 == "O")
         )
             winnerLine.classList.add("bottom");
         else if (
