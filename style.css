@@ -26,14 +26,29 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
 }
 
+@media (max-width: 650px) {
+  .form-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .form-content .set-names {
   display: inline-block;
   padding: 5px 10px;
+  margin: 5px 0;
   background-color: palevioletred;
   color: #fff;
   border-radius: 5px;

@@ -129,7 +129,6 @@ const setWinnerToLocalStorage = (player) => {
         : {};
     console.log(storageScores);
     if (storageScores[player]) {
-        console.log(true);
         storageScores[player]++;
     } else {
         storageScores[player] = 1;
